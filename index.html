@@ -2,288 +2,317 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chat com IA Gemini</title>
   <style>
-   body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: url('https://cdn77-pic.xvideos-cdn.com/videos/thumbs169poster/47/e7/2a/47e72ab960853c1f6c2ab71cf38a16b3/47e72ab960853c1f6c2ab71cf38a16b3.2.jpg') no-repeat center center fixed;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  color: #fff;
-  text-shadow: 0 0 5px rgba(0,0,0,0.8);
-  padding: 20px;
-  box-sizing: border-box;
-}
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      color: #fff;
+      text-shadow: 0 0 5px rgba(0,0,0,0.8);
+      padding: 20px;
+      box-sizing: border-box;
+    }
 
-h2 {
-  font-weight: 700;
-  font-size: 1.8rem;
-  text-align: center;
-  margin-top: 10px;
-  margin-bottom: 30px;
-  text-shadow: 0 0 8px rgba(0,0,0,0.9);
-}
+    h2 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      text-shadow: 0 0 8px rgba(0,0,0,0.9);
+    }
 
-.photos {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 900px;
-}
+    .photos {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 900px;
+      margin-bottom: 20px;
+    }
 
-.photo {
-  width: 220px;
-  height: 220px;
-  border-radius: 15px;
-  background-size: cover;
-  background-position: center;
-  cursor: pointer;
-  border: 4px solid rgba(255,255,255,0.8);
-  box-shadow: 0 8px 15px rgba(0,0,0,0.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .photo {
+      width: 220px;
+      height: 220px;
+      border-radius: 15px;
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+      border: 4px solid rgba(255,255,255,0.8);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.photo:hover {
-  transform: scale(1.1);
-  box-shadow: 0 12px 25px rgba(0, 102, 204, 0.7);
-  border-color: #0066cc;
-}
+    .photo:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 25px rgba(0, 102, 204, 0.7);
+      border-color: #0066cc;
+    }
 
-#chatContainer {
-  display: none;
-  flex-direction: column;
-  width: 450px;
-  max-width: 95vw;
-  height: 600px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
-  margin-top: 40px;
-  padding: 25px;
-  color: #222;
-  font-size: 16px;
-}
+    #chatContainer {
+      display: none;
+      flex-direction: column;
+      width: 450px;
+      max-width: 95vw;
+      height: 600px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+      margin-top: 20px;
+      padding: 15px;
+      color: #222;
+      font-size: 16px;
+    }
 
-#chatLog {
-  flex-grow: 1;
-  overflow-y: auto;
-  border: 1px solid #ccc;
-  padding: 15px;
-  margin-bottom: 20px;
-  font-size: 15px;
-  line-height: 1.5;
-  border-radius: 10px;
-  background: #f9f9f9;
-  box-shadow: inset 0 0 8px #ddd;
-}
+    #chatLog {
+      flex-grow: 1;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      line-height: 1.5;
+      border-radius: 10px;
+      background: #f9f9f9;
+      box-shadow: inset 0 0 8px #ddd;
+    }
 
-.msg {
-  margin-bottom: 14px;
-  max-width: 85%;
-  word-wrap: break-word;
-  padding: 8px 12px;
-  border-radius: 12px;
-  line-height: 1.4;
-}
+    .msg {
+      margin-bottom: 14px;
+      max-width: 85%;
+      word-wrap: break-word;
+      padding: 10px 14px;
+      border-radius: 12px;
+      line-height: 1.4;
+      font-size: 16px;
+    }
 
-.msg.user {
-  align-self: flex-end;
-  background-color: #007bff;
-  color: white;
-  text-align: right;
-  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.6);
-}
+    .msg.user {
+      align-self: flex-end;
+      background-color: #007bff;
+      color: white;
+      text-align: right;
+      box-shadow: 0 2px 8px rgba(0, 123, 255, 0.6);
+    }
 
-.msg.bot {
-  align-self: flex-start;
-  background-color: #e2e3e5;
-  color: #333;
-  text-align: left;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
+    .msg.bot {
+      align-self: flex-start;
+      background-color: #e2e3e5;
+      color: #333;
+      text-align: left;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
 
-.msg-media {
-  margin-top: 8px;
-  border-radius: 12px;
-  overflow: hidden;
-}
+    .msg-media {
+      margin-top: 8px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
 
-.msg-media img, .msg-media video {
-  width: 100%;
-  max-height: 220px;
-  border-radius: 12px;
-  display: block;
-}
+    .msg-media img, .msg-media video {
+      width: 100%;
+      max-height: 220px;
+      border-radius: 12px;
+      display: block;
+    }
 
-#inputContainer {
-  display: flex;
-  gap: 15px;
-}
+    #inputContainer {
+      display: flex;
+      gap: 10px;
+    }
 
-#inputMessage {
-  flex-grow: 1;
-  padding: 12px 15px;
-  font-size: 16px;
-  border-radius: 12px;
-  border: 1.5px solid #ccc;
-  transition: border-color 0.3s ease;
-}
+    #inputMessage {
+      flex-grow: 1;
+      padding: 12px 15px;
+      font-size: 16px;
+      border-radius: 12px;
+      border: 1.5px solid #ccc;
+      transition: border-color 0.3s ease;
+    }
 
-#inputMessage:focus {
-  border-color: #0066cc;
-  outline: none;
-  box-shadow: 0 0 8px #0066ccaa;
-}
+    #inputMessage:focus {
+      border-color: #0066cc;
+      outline: none;
+      box-shadow: 0 0 8px #0066ccaa;
+    }
 
-#sendBtn {
-  padding: 12px 20px;
-  font-size: 16px;
-  background-color: #0066cc;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0,102,204,0.6);
-}
+    #sendBtn {
+      padding: 12px 20px;
+      font-size: 16px;
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,102,204,0.6);
+    }
 
-#sendBtn:hover:not(:disabled) {
-  background-color: #004a99;
-  box-shadow: 0 6px 15px rgba(0,74,153,0.8);
-}
+    #sendBtn:hover:not(:disabled) {
+      background-color: #004a99;
+      box-shadow: 0 6px 15px rgba(0,74,153,0.8);
+    }
 
-#sendBtn:disabled {
-  background-color: #999;
-  cursor: not-allowed;
-  box-shadow: none;
-}
+    #sendBtn:disabled {
+      background-color: #999;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
 
-#closeChat {
-  align-self: flex-end;
-  background: transparent;
-  border: none;
-  font-size: 26px;
-  cursor: pointer;
-  color: #666;
-  margin-bottom: 20px;
-  transition: color 0.3s ease;
-}
+    #closeChat {
+      align-self: flex-end;
+      background: transparent;
+      border: none;
+      font-size: 26px;
+      cursor: pointer;
+      color: #666;
+      margin-bottom: 10px;
+      transition: color 0.3s ease;
+    }
 
-#closeChat:hover {
-  color: #000;
-}
+    #closeChat:hover {
+      color: #000;
+    }
 
-/* ======= RESPONSIVO ======= */
+    /* ======= RESPONSIVO ======= */
+    @media (max-width: 768px) {
+      body {
+        padding: 15px;
+      }
+      
+      h2 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+      }
+      
+      .photos {
+        gap: 15px;
+        margin-top: 10px;
+      }
 
-@media (max-width: 768px) {
-  h2 {
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-  }
-  
-  .photos {
-    gap: 20px;
-  }
+      .photo {
+        width: 160px;
+        height: 160px;
+        border-radius: 12px;
+        border: 3px solid rgba(255,255,255,0.9);
+      }
 
-  .photo {
-    width: 150px;
-    height: 150px;
-    border-radius: 12px;
-    border: 3px solid rgba(255,255,255,0.9);
-  }
+      #chatContainer {
+        width: 90vw;
+        height: 70vh;
+        padding: 12px;
+      }
 
- .chat-container {
-  width: 100%;
-  max-width: 600px; /* Ou ajuste conforme necessário */
-  height: 80vh; /* Ocupa 80% da altura da tela */
-  margin: 0 auto;
-}
+      #chatLog {
+        font-size: 15px;
+        padding: 12px;
+      }
 
-  #chatLog {
-    font-size: 13px;
-    padding: 12px;
-  }
+      .msg {
+        font-size: 15px;
+        padding: 8px 12px;
+      }
 
- #inputMessage {
-    font-size: 16px !important;
-    padding: 12px !important;
-  }
+      #inputMessage {
+        font-size: 15px;
+        padding: 10px 12px;
+      }
 
- #sendBtn {
-    font-size: 16px !important;
-    padding: 12px 18px !important;
-  }
-}
+      #sendBtn {
+        font-size: 15px;
+        padding: 10px 15px;
+      }
+    }
 
-@media (max-width: 600px) {
-  .photo {
-    width: 120px;
-    height: 120px;
-    border-radius: 10px;
-    border: 2.5px solid rgba(255,255,255,0.9);
-    gap: 20px !important;
-    flex-wrap: wrap; /* para quebra de linha se necessário */
-  }
-  .photo {
-    width: 140px !important;
-    height: 140px !important;
-    border-radius: 15px !important;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3) !important;
-  }
-  
-   /* Chat maior */
-  #chatContainer {
-    width: 100% !important;
-    height: 70vh !important;
-    max-width: none !important;
-  }
-}
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+      }
+      
+      .photos {
+        gap: 10px;
+      }
 
+      .photo {
+        width: 120px;
+        height: 120px;
+        border-radius: 10px;
+      }
+      
+      #chatContainer {
+        height: 75vh;
+        padding: 10px;
+      }
+      
+      #chatLog {
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      
+      #inputContainer {
+        gap: 8px;
+      }
+      
+      #inputMessage {
+        padding: 10px;
+      }
+      
+      #sendBtn {
+        padding: 10px 12px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .photo {
+        width: 100px;
+        height: 100px;
+      }
+      
+      #chatContainer {
+        height: 80vh;
+      }
+      
+      .msg {
+        font-size: 14px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h2 style="text-align: center; font-family: Arial, sans-serif; margin-top: 20px;">
-  Escolha a personalidade apertando na foto
-</h2>
+  <h2>Escolha a personalidade apertando na foto</h2>
 
-<div class="photos" style="display: flex; gap: 20px; justify-content: center; margin-top: 20px;">
-  <div class="photo" id="photo1" style="
-    width: 200px; height: 200px;
-    background-image: url('https://cdn77-image.gtflixtv.com/j_ytGiLc7x4Q8a605vu8VA==,1989961200/a4e857004ac6016ef79ad6131d9aead115339a67/1/6286/1288/3/118.jpg?c=1&method=resize&f=jpg&w=1024&height=576');
-    background-size: cover;
-    background-position: center;
-    cursor: pointer;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  "></div>
+  <div class="photos">
+    <div class="photo" id="photo1" style="
+      background-image: url('');
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+    "></div>
 
-  <div class="photo" id="photo2" style="
-    width: 200px; height: 200px;
-    background-image: url('https://incesto.blog.br/wp-content/uploads/2020/03/Loira-lesbica-provoca-massagista-nua-se-esfrega-e-ganha-lingua-na-xota-791.jpg');
-    background-size: cover;
-    background-position: center;
-    cursor: pointer;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  "></div>
+    <div class="photo" id="photo2" style="
+      background-image: url('');
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+    "></div>
 
-  <div class="photo" id="photo3" style="
-    width: 200px; height: 200px;
-    background-image: url('https://67.media.tumblr.com/6f3eb0c2824a505ed30ef53e347b97a5/tumblr_odt70irZMo1ry9t25o5_1280.jpg');
-    background-size: cover;
-    background-position: center;
-    cursor: pointer;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  "></div>
-</div>
+    <div class="photo" id="photo3" style="
+      background-image: url('');
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+    "></div>
+  </div>
 
   <div id="chatContainer">
     <button id="closeChat" title="Fechar chat">×</button>
