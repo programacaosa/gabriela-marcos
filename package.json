@@ -1,0 +1,13 @@
+{
+  "name": "inteligencia",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.x.x",
+    "node-fetch": "^3.x.x"
+  }
+}
