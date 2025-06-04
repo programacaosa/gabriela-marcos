@@ -210,27 +210,38 @@ h2 {
     padding: 12px;
   }
 
-  #inputMessage {
-    font-size: 14px;
-    padding: 10px 12px;
+ #inputMessage {
+    font-size: 16px !important;
+    padding: 12px !important;
   }
 
-  #sendBtn {
-    font-size: 14px;
-    padding: 10px 15px;
+ #sendBtn {
+    font-size: 16px !important;
+    padding: 12px 18px !important;
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .photo {
     width: 120px;
     height: 120px;
     border-radius: 10px;
     border: 2.5px solid rgba(255,255,255,0.9);
+    gap: 20px !important;
+    flex-wrap: wrap; /* para quebra de linha se necessário */
   }
-
+  .photo {
+    width: 140px !important;
+    height: 140px !important;
+    border-radius: 15px !important;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3) !important;
+  }
+  
+   /* Chat maior */
   #chatContainer {
-    height: 65vh;
+    width: 90vw !important;
+    height: 70vh !important;
+    max-width: none !important;
   }
 }
 
