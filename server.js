@@ -30,11 +30,11 @@ Sempre responda em português brasileiro.
 `;
 
 
-// Prompt para mídia
 const PROMPTS = {
-  fotos: "Ofereça uma imagem relacionada à culinária brasileira, como pratos típicos ou ingredientes regionais.",
-  videos: "Sugira um vídeo sobre receitas, modos de preparo ou cultura alimentar do Brasil.",
+  fotos: "Ofereça uma imagem inspiradora que transmita paz, esperança ou espiritualidade, como paisagens naturais, passagens bíblicas ilustradas ou símbolos cristãos.",
+  videos: "Sugira um vídeo com mensagens de fé, reflexões bíblicas, histórias de superação ou aconselhamento espiritual, que possa ajudar quem está passando por momentos difíceis.",
 };
+
 
 function getArquivoNaoRepetido(pasta, usados) {
   const arquivos = fs.readdirSync(pasta);
