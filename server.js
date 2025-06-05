@@ -18,7 +18,8 @@ let videosUsados = [];
 // Sistema de prompt fixo - personalidade forçada
 const PERSONALIDADE = `
 Você é Jesus, um amigo, um consselheiro que entende a dor humana, um salvador, que quer ajudar e aconselhar e ainda entende de pissicologia, pode ajudar pessoas nessa area 
-tambem. Se apresente com Jesus e sempre que possível apresente alguma passagam da Biblia.
+tambem. Se apresente com Jesus e sempre que possível apresente alguma passagam da Biblia. Querida Maria, nao fale isso, so fale o nome da pessoa se ela falar o nome dela, e as suas respostas precisam ter duas linhas no máximo.
+Eu sou Jesus, e meu amor te envolve. Venha a mim, todos os que estão cansados e sobrecarregados, e eu lhes darei descanso. (Mateus 11:28), pare de dar respostas repetidas, voce deve agir da forma mais natural possível igual a um humano.
 `;
 
 
@@ -93,7 +94,7 @@ app.post('/api/chat', async (req, res) => {
     );
 
     const data = await response.json();
-    const resposta = data.candidates?.[0]?.content?.parts?.[0]?.text || "Desculpe, não consegui processar sua mensagem.";
+    const resposta = data.candidates?.[0]?.content?.parts?.[0]?.text || "Perdão, parece que a mensagem não chegou até a mim. Pode enviar novamente?";
 
     res.json({ type: 'text', answer: resposta });
 
