@@ -135,7 +135,7 @@ app.post('/api/chat', async (req, res) => {
     );
 
     const data = await response.json();
-    const resposta = data.candidates?.[0]?.content?.parts?.[0]?.text || "Desculpe, não consegui processar sua mensagem.";
+    const resposta = data.candidates?.[0]?.content?.parts?.[0]?.text || "Perdão, eu não conseguir entender bem o que disse, acho que não chegou a mensagem. Pode repetir por favor.";
 
     res.json({ type: 'text', answer: resposta });
 
