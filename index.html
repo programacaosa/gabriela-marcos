@@ -70,6 +70,39 @@
       padding: 15px;
       color: #222;
       font-size: 16px;
+      position: relative;
+    }
+
+    #donationAlert {
+      display: none;
+      position: absolute;
+      top: -120px;
+      left: 0;
+      right: 0;
+      background: rgba(0, 102, 204, 0.9);
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      z-index: 10;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      animation: slideDown 0.5s ease-out;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    #closeDonationAlert {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
     }
 
     #chatLog {
@@ -211,6 +244,12 @@
         padding: 12px;
       }
 
+      #donationAlert {
+        top: -150px;
+        font-size: 14px;
+        padding: 10px;
+      }
+
       #chatLog {
         font-size: 15px;
         padding: 12px;
@@ -253,6 +292,11 @@
         padding: 10px;
       }
       
+      #donationAlert {
+        top: -180px;
+        font-size: 13px;
+      }
+      
       #chatLog {
         padding: 10px;
         margin-bottom: 10px;
@@ -284,26 +328,34 @@
       .msg {
         font-size: 14px;
       }
+
+      #donationAlert {
+        top: -200px;
+        font-size: 12px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h2>Precisando de ajuda? Aperte na foto para abrir o chat. Estamos aqui para ajudar voce!</h2>
+  <h2>Precisando de ajuda? Aperte na foto para abrir o chat. Estamos aqui para ajudar você!</h2>
 
-  
-
+  <div class="photos">
     <div class="photo" id="photo2" style="
       background-image: url('https://i.pinimg.com/474x/e3/c6/17/e3c617602426da41b75f0d441773b695.jpg');
       background-size: cover;
       background-position: center;
       cursor: pointer;
     "></div>
-
-   
   </div>
 
   <div id="chatContainer">
+    <div id="donationAlert">
+      <button id="closeDonationAlert">×</button>
+      <p>Olá, esse projeto não conta com ajuda de empresa ou governo. É um projeto totalmente independente e para que o projeto cresca e mais pessoas possam ser ajudadas prevenindo o suicídio, aconselhando e ajudando, pedimos sua ajuda.</p>
+      <p>Precisamos de doações para que o projeto cresca e possamos ajudar cada dia mais pessoas, bem como crescer o projeto adicionando mais funcionalidades com filmes, jogos temáticos entre outros.</p>
+      <p><strong>Se puder ajudar, nossa chave PIX:</strong><br>01300634529 (CPF)<br>Banco Itaú</p>
+    </div>
     <button id="closeChat" title="Fechar chat">×</button>
     <div id="chatLog"></div>
     <div id="inputContainer">
@@ -319,17 +371,25 @@
     const inputMessage = document.getElementById("inputMessage");
     const sendBtn = document.getElementById("sendBtn");
     const closeChat = document.getElementById("closeChat");
+    const donationAlert = document.getElementById("donationAlert");
+    const closeDonationAlert = document.getElementById("closeDonationAlert");
 
     photos.forEach(photo => {
       photo.addEventListener("click", () => {
         chatContainer.style.display = "flex";
         chatLog.innerHTML = "";
-        addMessage("bot", "Olá! Estou aqui para converar.");
+        donationAlert.style.display = "block";
+        addMessage("bot", "Olá! Estou aqui para conversar.");
       });
     });
 
     closeChat.addEventListener("click", () => {
       chatContainer.style.display = "none";
+      donationAlert.style.display = "none";
+    });
+
+    closeDonationAlert.addEventListener("click", () => {
+      donationAlert.style.display = "none";
     });
 
     sendBtn.addEventListener("click", sendMessage);
