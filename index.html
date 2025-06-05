@@ -58,20 +58,20 @@
     }
 
     #chatContainer {
-      display: none;
-      flex-direction: column;
-      width: 450px;
-      max-width: 95vw;
-      height: 800px;
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
-      margin-top: 20px;
-      padding: 15px;
-      color: #222;
-      font-size: 16px;
-      position: relative;
-    }
+  display: none;
+  flex-direction: column;
+  width: 600px;  /* Aumentei de 450px para 600px */
+  max-width: 95vw;
+  height: 800px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+  margin-top: 20px;
+  padding: 15px;
+  color: #222;
+  font-size: 16px;
+  position: relative;
+}
 
     #donationAlert {
       display: none;
@@ -271,11 +271,11 @@
       }
     }
 
-    @media (max-width: 480px) {
-      h2 {
-        font-size: 1.3rem;
-        margin-bottom: 15px;
-      }
+    @media (min-width: 1200px) {
+  #chatContainer {
+    width: 800px;
+  }
+}
       
       .photos {
         gap: 10px;
